@@ -19,6 +19,6 @@ To deactivate virtual environment:
 $ deactivate
 
 Python packages | Dependencies:
-Flask
-sha256_crypt
+Flask, 
+sha256_crypt, 
 Fernet
