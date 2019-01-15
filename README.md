@@ -4,7 +4,7 @@ Project Objective:
 To understand the working of Flask webserver.
 
 The Project Description:
-A Web Application to Perform Create, Read, Update, Delete (CRUD) operations on the files.
+A Web Application to Perform Create, Read, Update, Delete (CRUD), Encryption and Decryption operations on the files.
 The Application restricts users on the basis of username and password, such that to restrict unauthorized access.
 
 Python Version : 2.7.11
