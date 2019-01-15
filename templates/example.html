@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secure-it</title>
+  <!-- scripts -->
+  <link type = "text/css" href = "{{ url_for('static', filename = 'css/bootstrap.min.css') }}" rel = "stylesheet">
+  <link type = "shortcut icon" href = "{{ url_for('static', filename= 'favicon.ico') }}">
+  <script src = "{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+  <script src = "{{ url_for('static', filename = 'jquery-3.2.1.min.js') }}"></script>
+  <!-- fonts -->
+  <link href = "https://fonts.googleapis.com/css?family=Acme|Aldrich|Allerta" rel = "stylesheet">
+  <!-- metadata -->
+  <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+  <!-- Inline stylesheet -->
+  <style>
+  #title{
+    font-family:'Acme', sans-serif;
+    background-color: #ECD6C0;
+    color: white;
+  }
+
+  #title-block{
+    margin-top: 10px;
+  }
+
+  #title-head{
+    font-size: 60px;
+    text-shadow: 2px solid black;
+  }
+
+  #choose-one{
+    font-family: 'Aldrich',sans-serif;
+    font-size: 45px;
+    color: #B06868;
+  }
+
+  #img1{
+    margin-top: 50px;
+    margin-left: 20px;
+  }
+
+  #img2{
+    margin-top: 50px;
+    margin-right: 20px;
+  }
+
+  #fc{
+    font-family: 'Allerta',sans-serif;
+    color: #B06868;
+  }
+  </style>
+</head>
+<body>
+  <div class = "container">
+    <div class = "container" id = "title-block">
+      <div class = "panel panel-default" id = "title">
+        <h1>
+          <span id = "title-head">
+            <center>SECURE-IT</center>
+          </span>
+        </h1>
+      </div>
+    </div><br>
+    <div class = "container">
+      <div class = "choose">
+        <h2>
+          <span id = "choose-one">
+            <center>
+              Choose one:
+            </center>
+          </span>
+        </h2>
+      </div>
+    </div><br>
+    <div class = "container">
+      <div class = "pull-left" id = "img1">
+        <section>
+          <figure>
+            <img src = "{{ url_for('static', filename = 'images/user.png') }}" height = 256px width = 256px>
+          </figure>
+          <figcaption>
+            <center>
+              <span>
+                <div>
+                  <button type = "button" class = "btn btn-link" id = "fc">
+                    <h3>
+                      <a href = "#" id = "fc">New User</a>
+                    </h3>
+                  </button>
+                </div>
+              </span>
+            </center>
+          </figcaption>
+        </section>
+      </div>
+      <div class = "pull-right" id = "img2">
+        <section>
+          <figure>
+            <img src= "{{ url_for('static',filename = 'images/reg.png') }}" height = 256px width = 256px>
+          </figure>
+          <figcaption>
+            <center>
+              <span>
+                <div>
+                  <button type = "button" class = "btn btn-link" id = "fc">
+                    <h3>
+                      <a href = "#" id = "fc">Registered User</a>
+                    </h3>
+                  </button>
+                </div>
+              </span>
+            </center>
+          </figcaption>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script>
+  </script>
+</body>
+</html>

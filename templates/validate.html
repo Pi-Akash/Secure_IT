@@ -1,0 +1,193 @@
+<html>
+    <head>
+    <title>User Information</title>
+    <!-- scripts -->
+    <link type = "text/css" href = "{{ url_for('static', filename = 'css/bootstrap.min.css') }}" rel = "stylesheet">
+    <link type = "shortcut icon" href = "{{ url_for('static', filename= 'favicon.ico') }}">
+    <script src = "{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'jquery-3.2.1.min.js') }}"></script>
+    <!-- fonts -->
+    <link href = "https://fonts.googleapis.com/css?family=Acme|Aldrich|Allerta" rel = "stylesheet">
+    <!-- metadata -->
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+    <!-- inline Stylesheet -->
+    <style>
+        #mainframe {
+            height: auto;
+        }
+
+        #frame {
+            border-radius: 38px;
+            height: 489px;
+            background-color: #F9F7F7;
+        }
+
+        #left-pallate {
+            border-radius: 38px;
+            height: 488px;
+            background-color: #F9F7F7;
+        }
+
+        #right-pallate {
+            border-radius: 38px;
+            height: 488px;
+            background-color: #F9F7F7;
+        }
+
+        #reg-title {
+            transform: rotate(-90deg);
+            text-align: center;
+            margin-top: 210px;
+            font-family: 'Acme', sans-serif;
+            font-size: 48px;
+            color: #686363;
+        }
+
+        #profile{
+          margin-left: 4px;
+          margin-top: 30px;
+        }
+
+        #submit,#clear,#back {
+            margin-top: 20px;
+            margin-right: 100px;
+            border-radius: 30px;
+            background-color: #EBEBEB;
+            font-family: 'Acme', sans-serif;
+            color: #686363;
+            text-align: center;
+        }
+
+        #title {
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 30px;
+            background-color: #EBEBEB;
+            font-family: 'Acme', sans-serif;
+            text-align: justify;
+            color: #686363;
+            width : 95%;
+            height: auto;
+        }
+
+        #data-1,#data-2{
+            margin-left: 8px;
+            margin-top: 20px;
+            border-radius: 30px;
+            background-color: #EBEBEB;
+            font-family: 'Acme', sans-serif;
+            width: 150%;
+            color: #686363;
+            height: 40px;
+            text-align: center;
+        }
+
+        #back-body{
+            background-image: url('{{ url_for('static', filename = 'images/back.jpg') }}');
+            background-repeat: repeat;
+        }
+        #body{
+          margin-left: 0px;
+        }
+        #mid-title{
+          margin-top : 20px;
+          border-radius: 30px;
+          background-color: #EBEBEB;
+          font-family: 'Acme', sans-serif;
+          text-align: center;
+          color: #686363;
+          width : 100%;
+        }
+    </style>
+</head>
+<body id = "back-body">
+    <br><br><br>
+    {% if errors %}
+    <div class="container alert alert-danger">
+  {{ errors }}
+    </div>
+    {% endif %}
+    <div class="conatiner">
+        <div class="container" id="mainframe">
+            <div class="panel panel-default" id="frame">
+                <div class="panel panel-default col-sm-2" id="left-pallate">
+                    <!-- Left pallet -->
+                    <div class="" id="reg-title">
+                        <h1>Validation</h1>
+                    </div>
+                </div>
+                <div class="panel panel-default col-sm-2" id="left-pallate">
+                    <!-- middle pallet -->
+                    <div class="" id="profile">
+                        <img src="{{ url_for('static', filename = 'images/u.png') }}" height = "150px" width = "150px">
+                    </div>
+                </div>
+                <div class="panel panel-default col-sm-8" id="right-pallate">
+                    <!-- right pallet -->
+                    <form class="form-horizontal" action = "{{ url_for('validate') }}" method = "post" id = "verify_form">
+                        <div class="" id = "body">
+                            <!-- User-id -->
+                            <section>
+                                <div class = "form-group" id = "">
+                                    <label class="panel panel-default col-sm-8" id="title">
+                                      <h4>
+                                        <p>Hello User,<br><br>
+                                           Instructions:<br>
+                                           <ul>
+                                             <li>Enter your 'User-ID' below</li>
+                                             <li>Enter Passcode below the User-ID</li>
+                                             <li>Click 'Submit' button</li>
+                                           </ul><br>
+                                            Thankyou,<br>
+                                            Team Secure-it
+                                        </p>
+                                      </h4>
+                                    </label>
+                                </div>
+                            </section>
+                            <!-- files -->
+                            <section>
+                                <div class="form-group" id="">
+                                    <div class="col-sm-8" id="">
+                                        <h4>
+                                            <input type = "text" class = "form-control" id = "data-1" placeholder = "Enter User-ID here" name = "userid">
+                                            <input type = "number" class = "form-control" id = "data-2" placeholder = "Enter Code here" name = "code">
+                                        </h4>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="bottom">
+            <section>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-default panel panel-default col-sm-2" id="submit" form = "verify_form"><h4>Submit</h4></button>
+                    <!-- Clear button -->
+                    <button type="reset" class=" btn btn-default panel panel-default col-sm-2" id="clear"><h4>Clear</h4></button>
+                    <!-- back button -->
+                    <button type="button" class=" btn btn-default panel panel-default col-sm-2" id="back">
+                        <h4>
+                            <a href = "{{ url_for('new_file') }}" id = "back"><center><span style = "color: #686363;">Back</span></center></a>
+                        </h4>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+    var input = document.querySelector('#clear');
+    var textarea1 = document.querySelector('#data-1');
+    var textarea2 = document.querySelector('#data-2')
+    input.addEventListener('click', function () {
+       textarea1.value = '';
+       textarea2.value = '';
+     }, false);
+    </script>
+</body>
+</html>

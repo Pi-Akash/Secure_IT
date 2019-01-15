@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <!-- scripts -->
+  <link type = "text/css" href = "{{ url_for('static', filename = 'css/bootstrap.min.css') }}" rel = "stylesheet">
+  <link type = "shortcut icon" href = "{{ url_for('static', filename= 'favicon.ico') }}">
+  <script src = "{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+  <script src = "{{ url_for('static', filename = 'jquery-3.2.1.min.js') }}"></script>
+  <!-- fonts -->
+  <link href = "https://fonts.googleapis.com/css?family=Acme|Aldrich|Allerta" rel = "stylesheet">
+  <!-- metadata -->
+  <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+  <!-- Inline stylesheet -->
+  <style>
+    #mainframe{
+      height: auto;
+    }
+
+    #frame{
+      border-radius: 38px;
+      height: 489px;
+      background-color: #F9F7F7;
+    }
+
+    #left-pallate{
+      border-radius: 38px;
+      height: 488px;
+      background-color: #F9F7F7;
+    }
+
+    #right-pallate{
+      border-radius: 38px;
+      height: 488px;
+      background-color: #F9F7F7;
+    }
+
+    #title{
+      margin-left: 20px;
+      margin-top: 42px;
+      margin-bottom: 0px;
+      margin-right: 30px;
+      background-color: #EBEBEB;
+      font-family: 'Acme',sans-serif;
+      text-align: center;
+      color: #686363;
+      border-radius: 30px;
+    }
+
+    #data1,#data2,#data3{
+      margin-left: 20px;
+      margin-top: 42px;
+      border-radius: 30px;
+      background-color: #EBEBEB;
+      font-family: 'Acme',sans-serif;
+      width: 100%;
+      height: 40px;
+      color: #686363;
+    }
+
+    #new-title{
+      transform: rotate(-90deg);
+      text-align: center;
+      margin-top: 210px;
+      font-family: 'Acme',sans-serif;
+      font-size: 48px;
+      color: #686363;
+    }
+
+    #login,#clear,#back{
+      margin-top: 20px;
+      margin-right: 100px;
+      border-radius: 30px;
+      background-color: #EBEBEB;
+      font-family: 'Acme',sans-serif;
+      color: #686363;
+      text-align: center;
+    }
+
+    #block{
+      margin-top: 50px;
+    }
+    #body{
+        background-image: url('{{ url_for('static', filename = 'images/back.jpg') }}');
+        background-repeat: repeat;
+    }
+  </style>
+</head>
+<body id = "body">
+    <br><br><br>
+    {% if errors %}
+    <div class="container alert alert-danger">
+{{ errors }}
+    </div>
+    {% endif %}
+    <!-- Main frame -->
+    <div class="container">
+        <div class="container" id="mainframe">
+            <!-- outer panel -->
+            <div class="panel panel-default" id="frame">
+                <!-- left-pallete -->
+                <div class="panel panel-default col-sm-2" id="left-pallate">
+                    <!-- Left pallet -->
+                    <div class="" id="new-title">
+                        <h1>Login</h1>
+                    </div>
+                </div>
+                <!-- right pallete -->
+                <form class="form-horizontal" action = "{{ url_for('login_display') }}" method = "post" id = "login_form">
+                    <div class="">
+                        <div class="panel panel-default col-sm-10" id="right-pallate">
+                           <div id = "block">
+                            <section>
+                                <div class="form-group" id="first">
+                                    <label class="panel panel-default col-sm-3" id="title"><h4>User-id</h4></label>
+                                    <div class="col-sm-7" id="">
+                                        <h4>
+                                            <input type="text" class="form-control" id="data1" placeholder="Enter User-id" name="userid">
+                                        </h4>
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="form-group" id="second">
+                                    <label class="panel panel-default col-sm-3" id="title"><h4>E-mail</h4></label>
+                                    <div class="col-sm-7" id="">
+                                        <h4>
+                                            <input type="email" class="form-control" id="data2" placeholder="Enter E-mail" name="email">
+                                        </h4>
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="form-group" id="third">
+                                    <label class="panel panel-default col-sm-3" id="title"><h4>password</h4></label>
+                                    <div class="col-sm-7" id="">
+                                        <h4>
+                                            <input type="password" class="form-control" id="data3" placeholder="Enter Password" name="password">
+                                        </h4>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Buttons -->
+            <div class="container" id="bottom">
+                <!-- section -->
+                <section>
+                    <!-- blank division -->
+                    <div class="col-sm-3"></div>
+                    <!-- buttons division -->
+                    <div class="col-sm-9" id="fifth">
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-default panel panel-default col-sm-2" id="login" form = "login_form">
+                          <h4>
+                              <a href = "#"><center><span style = "color:#686363;">Login</span></center></a>
+                          </h4>
+                        </button>
+                        <!-- Clear button -->
+                        <button type="reset" class=" btn btn-default panel panel-default col-sm-2" id="clear"><h4>Clear</h4></button>
+                        <!-- back button -->
+                        <button type="button" class=" btn btn-link panel panel-default col-sm-2" id="back">
+                        <h4>
+                            <a href = "{{ url_for('registered') }}"><center><span style = "color:#686363;">Back</span></center></a>
+                        </h4>
+                    </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+    var input = document.querySelector('#clear');
+    var textarea1 = document.querySelector('#data1');
+    var textarea2 = document.querySelector('#data2');
+    var textarea3 = document.querySelector('#data3');
+    input.addEventListener('click', function () {
+	     textarea1.value = '';
+       textarea2.value = '';
+       textarea3.value = '';
+     }, false);
+    </script>
+</body>
+</html>

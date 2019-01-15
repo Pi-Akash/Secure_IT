@@ -1,0 +1,196 @@
+<html>
+    <head>
+    <title>New file</title>
+    <!-- scripts -->
+    <link type = "text/css" href = "{{ url_for('static', filename = 'css/bootstrap.min.css') }}" rel = "stylesheet">
+    <link type = "shortcut icon" href = "{{ url_for('static', filename= 'favicon.ico') }}">
+    <script src = "{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'jquery-3.2.1.min.js') }}"></script>
+    <!-- fonts -->
+    <link href = "https://fonts.googleapis.com/css?family=Acme|Aldrich|Allerta" rel = "stylesheet">
+    <!-- metadata -->
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+    <!-- inline Stylesheet -->
+    <style>
+        #mainframe {
+            height: auto;
+        }
+
+        #frame {
+            border-radius: 38px;
+            height: 489px;
+            background-color: #F9F7F7;
+        }
+
+        #left-pallate {
+            border-radius: 38px;
+            height: 488px;
+            background-color: #F9F7F7;
+        }
+
+        #right-pallate {
+            border-radius: 38px;
+            height: 488px;
+            background-color: #F9F7F7;
+        }
+
+        #reg-title {
+            transform: rotate(-90deg);
+            text-align: center;
+            margin-top: 210px;
+            font-family: 'Acme', sans-serif;
+            font-size: 48px;
+            color: #686363;
+        }
+
+        #submit,#clear,#back {
+            margin-top: 20px;
+            margin-right: 100px;
+            border-radius: 30px;
+            background-color: #EBEBEB;
+            font-family: 'Acme', sans-serif;
+            color: #686363;
+            text-align: center;
+        }
+
+        #title {
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            border-radius: 30px;
+            background-color: #EBEBEB;
+            font-family: 'Acme', sans-serif;
+            text-align: center;
+            color: #686363;
+        }
+
+        #data-1,#data-2,#data-3 {
+            margin-left: 20px;
+            margin-top: 20px;
+            border-radius: 30px;
+            background-color: #EBEBEB;
+            font-family: 'Acme', sans-serif;
+            width: 115%;
+            color: #686363;
+            height: 40px;
+        }
+
+        #data-4 {
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 30px;
+            background-color: #EBEBEB;
+            font-family: 'Acme', sans-serif;
+            height: 30%;
+            width: 115%;
+            color: #686363;
+        }
+        #body{
+            background-image: url('{{ url_for('static', filename = 'images/back.jpg') }}');
+            background-repeat: repeat;
+        }
+    </style>
+</head>
+
+<body id = "body">
+    <br><br><br>
+    {% if message %}
+    <div class="container alert alert-success">
+  {{ message }}
+    </div>
+    {% endif %}
+    <div class="conatiner">
+        <div class="container" id="mainframe">
+            <div class="panel panel-default" id="frame">
+                <div class="panel panel-default col-sm-2" id="left-pallate">
+                    <!-- Left pallet -->
+                    <div class="" id="reg-title">
+                        <h1>New File</h1>
+                    </div>
+                </div>
+                <div class="panel panel-default col-sm-10" id="right-pallate">
+                    <!-- right pallet -->
+                    <form class="form-horizontal" method = "post" action = "{{ url_for('reg_newfile_display') }}" id = "reg_newfile_form">
+                        <div class="">
+                          <!-- userid -->
+                          <section>
+                            <div class="form-group" id="">
+                                  <label class="panel panel-default col-sm-3" id="title"><h4>User-id</h4></label>
+                                  <div class="col-sm-7" id="">
+                                      <h4>
+                                          <input type="text" class="form-control" id="data-1" placeholder="Enter User-id" name = 'userid'>
+                                      </h4>
+                                  </div>
+                              </div>
+                          </section>
+                          <!-- fileid -->
+                          <section>
+                              <div class="form-group" id="Third">
+                                  <label class="panel panel-default col-sm-3" id="title"><h4>File-id</h4></label>
+                                  <div class="col-sm-7" id="">
+                                      <h4>
+                                          <input type="number" class="form-control" id="data-2" placeholder="Enter File-id" name = 'fileid'>
+                                      </h4>
+                                  </div>
+                              </div>
+                          </section>
+                          <!-- filename -->
+                          <section>
+                              <div class="form-group" id="first">
+                                  <label class="panel panel-default col-sm-3" id="title"><h4>Filename</h4></label>
+                                  <div class="col-sm-7" id="">
+                                      <h4>
+                                          <input type="text" class="form-control" id="data-3" placeholder="Enter filename here" name = 'filename'>
+                                      </h4>
+                                  </div>
+                              </div>
+                          </section>
+                          <!-- data -->
+                          <section>
+                              <div class="form-group" id="second">
+                                  <label class="panel panel-default col-sm-3" id="title"><h4>Data</h4></label>
+                                  <div class="col-sm-7" id="">
+                                      <h4>
+                                          <textarea class="form-control" id="data-4" rows="5" placeholder="Enter new data here" name = 'new_data'></textarea>
+                                      </h4>
+                                  </div>
+                              </div>
+                          </section>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <div class="container" id="bottom">
+          <section>
+              <div class="col-sm-3"></div>
+              <div class="col-sm-9">
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-default panel panel-default col-sm-2" id="submit" form = 'reg_newfile_form'><h4>Submit</h4></button>
+                  <!-- Clear button -->
+                  <button type="reset" class=" btn btn-default panel panel-default col-sm-2" id="clear"><h4>Clear</h4></button>
+                  <!-- back button -->
+                  <button type="button" class=" btn btn-default panel panel-default col-sm-2" id="back">
+                      <h4>
+                          <a href = "{{ url_for('registered_file') }}" id = "back"><center>Back</center></a>
+                      </h4>
+                  </button>
+              </div>
+          </section>
+      </div>
+  </div>
+  <script>
+  var input = document.querySelector('#clear');
+  var textarea1 = document.querySelector('#data-1');
+  var textarea2 = document.querySelector('#data-2');
+  var textarea3 = document.querySelector('#data-3');
+  input.addEventListener('click', function () {
+	   textarea1.value = '';
+     textarea2.value = '';
+     textarea3.value = '';
+   }, false);
+  </script>
+</body>
+</html>
